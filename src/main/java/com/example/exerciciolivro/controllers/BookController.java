@@ -26,7 +26,7 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.OK).body(bookRepository.findAll());
     }
 
-    @GetMapping("/filter/{genre}")
+    @GetMapping("/genre/{genre}")
     public ResponseEntity<List<BookModel>> getAllBooksByGenre(@PathVariable(value = "genre") String genre) {
         return ResponseEntity.status(HttpStatus.OK).body(bookRepository.findAllByGenreIgnoreCase(genre));
     }
