@@ -26,6 +26,11 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.OK).body(bookRepository.findAll());
     }
 
+    @GetMapping("/filter/{genre}")
+    public ResponseEntity<List<BookModel>> getAllBooksByGenre(@PathVariable(value = "genre") String genre) {
+        return ResponseEntity.status(HttpStatus.OK).body(bookRepository.findAllByGenreIgnoreCase(genre));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getBookById(@PathVariable(value = "id") UUID id) {
         Optional<BookModel> bookO = bookRepository.findById(id);
